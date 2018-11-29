@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { LeaseService } from '../../../shared/index';
 import { Tenant } from '../../../models/index';
 import { HelperService } from '../../../core/index';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-lease-list',
@@ -11,12 +12,12 @@ import { HelperService } from '../../../core/index';
 })
 export class LeaseListComponent implements OnInit {
   leases:Tenant[];
-  
+  subscription:Subscription;
 
   constructor(private router: Router,private leaseService:LeaseService,private helperService:HelperService) { }
 
   ngOnInit() {
-    this.leaseService.getLeases().subscribe((results:Tenant[]) =>{
+     this.subscription = this.leaseService.getLeases().subscribe((results:Tenant[]) =>{
       this.leases = results;
       this.helperService.cachedLeases = this.leases; //save leases for cache or check for route validation
     });
@@ -26,5 +27,9 @@ export class LeaseListComponent implements OnInit {
   getLeaseDetails(lease:Tenant){
     this.helperService.currentTenant = lease.tenant;//Data Service to share data between components
     this.router.navigate(['/leases', lease.id ]);
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe();
   }
 }
