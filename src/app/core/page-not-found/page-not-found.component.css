@@ -1,0 +1,9 @@
+.align{
+    position: absolute;
+    top: 30%;
+    left: 40%;
+}
+.margin{
+    position: relative;
+    margin: 0px 20px;
+}

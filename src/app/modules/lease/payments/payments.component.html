@@ -1,0 +1,21 @@
+
+<table  class="table table-hover table-sm margin-top">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">From</th>
+        <th scope="col">To</th>
+        <th scope="col">Days</th>
+        <th scope="col">Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+       
+      <tr *ngFor="let payment of payments">
+        <td>{{payment.from | date:'fullDate'}}</td>
+        <td>{{payment.to | date:'fullDate'}}</td>
+        <td>{{payment.days}}</td>
+        <td>{{payment.amount}}</td>
+      </tr>
+    
+    </tbody>
+  </table>

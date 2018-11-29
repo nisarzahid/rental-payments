@@ -1,0 +1,45 @@
+<div class="card margin-top">
+  <h2 class="display-10 text-center margin-top">Lease Information</h2>
+    <div class="card-header">
+        <h5 class="card-title">{{lease.id}}  <small class="text-muted">for {{helperService.currentTenant}}</small></h5>
+    </div>
+    <div class="card-body">
+     
+      <div class="row">
+        <div class="col-6">
+            <span> <strong>Start Date</strong></span>
+            <span class="detail-info">{{lease.start_date | date:'fullDate'}}</span>
+        </div>
+        <div class="col-6">
+            <span> <strong>End Date</strong></span>
+            <span class="detail-info">{{lease.end_date | date:'fullDate'}}</span>
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="col-6">
+              <span> <strong>Payment Day</strong></span>
+              <span class="detail-info">{{lease.payment_day}}</span>
+          </div>
+          <div class="col-6">
+              <span> <strong>Frequency</strong></span>
+              <span class="detail-info">{{lease.frequency}}</span>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <span> <strong>Rent</strong></span>
+                <span class="detail-info">{{lease.rent}}</span>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <a href="javascript:void(0)" class="btn btn-primary btn-custom" (click)="showPayment = true">View Payments</a>
+            <a href="javascript:void(0)" class="btn btn-secondary btn-custom" routerLink="/leases">Back</a>
+        </div>
+      
+    </div>
+  </div>
+
+<div *ngIf="showPayment">
+  <app-payments  lease="lease"></app-payments>
+</div>

@@ -1,0 +1,19 @@
+<h2 class="display-10 margin">Leases</h2>
+<table class="table table-hover margin-top">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Tenant</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+       
+      <tr *ngFor="let lease of leases">
+        <td>{{lease.id}}</td>
+        <td>{{lease.tenant}}</td> 
+        <td><button type="button" class="btn btn-secondary" (click)="getLeaseDetails(lease)">Details</button></td>    
+      </tr>
+    
+    </tbody>
+  </table>
